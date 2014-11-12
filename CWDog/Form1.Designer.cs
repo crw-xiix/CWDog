@@ -28,8 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.lLeft = new System.Windows.Forms.Label();
+            this.bClose = new CWDog.TButton();
             this.lDit = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.tDit = new System.Windows.Forms.TrackBar();
@@ -39,10 +43,10 @@
             this.tTone = new System.Windows.Forms.TrackBar();
             this.label1 = new System.Windows.Forms.Label();
             this.tStatic = new System.Windows.Forms.TrackBar();
+            this.bSend = new CWDog.TButton();
             this.tSend = new System.Windows.Forms.TextBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.bClose = new CWDog.TButton();
-            this.bSend = new CWDog.TButton();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tDit)).BeginInit();
@@ -60,11 +64,13 @@
             this.tabControl1.Location = new System.Drawing.Point(-1, 2);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(567, 420);
+            this.tabControl1.Size = new System.Drawing.Size(764, 379);
             this.tabControl1.TabIndex = 0;
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.textBox1);
+            this.tabPage1.Controls.Add(this.lLeft);
             this.tabPage1.Controls.Add(this.bClose);
             this.tabPage1.Controls.Add(this.lDit);
             this.tabPage1.Controls.Add(this.label3);
@@ -80,11 +86,44 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(559, 394);
+            this.tabPage1.Size = new System.Drawing.Size(756, 353);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "tabPage1";
             this.tabPage1.UseVisualStyleBackColor = true;
             this.tabPage1.Click += new System.EventHandler(this.tabPage1_Click);
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(51, 312);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(100, 20);
+            this.textBox1.TabIndex = 14;
+            // 
+            // lLeft
+            // 
+            this.lLeft.AutoSize = true;
+            this.lLeft.Location = new System.Drawing.Point(600, 45);
+            this.lLeft.Name = "lLeft";
+            this.lLeft.Size = new System.Drawing.Size(35, 13);
+            this.lLeft.TabIndex = 13;
+            this.lLeft.Text = "label2";
+            // 
+            // bClose
+            // 
+            this.bClose.BackColor = System.Drawing.Color.Tomato;
+            this.bClose.BorderColor = System.Drawing.Color.Black;
+            this.bClose.BorderWidth = 0;
+            this.bClose.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.bClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bClose.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.bClose.Location = new System.Drawing.Point(435, 351);
+            this.bClose.Name = "bClose";
+            this.bClose.Radius = -1;
+            this.bClose.Size = new System.Drawing.Size(118, 37);
+            this.bClose.TabIndex = 12;
+            this.bClose.Text = "Close";
+            this.bClose.UseVisualStyleBackColor = false;
+            this.bClose.Click += new System.EventHandler(this.bClose_Click);
             // 
             // lDit
             // 
@@ -94,7 +133,7 @@
             this.lDit.ForeColor = System.Drawing.Color.GreenYellow;
             this.lDit.Location = new System.Drawing.Point(474, 251);
             this.lDit.Name = "lDit";
-            this.lDit.Size = new System.Drawing.Size(66, 42);
+            this.lDit.Size = new System.Drawing.Size(88, 42);
             this.lDit.TabIndex = 11;
             this.lDit.Text = "480";
             this.lDit.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -130,7 +169,7 @@
             this.lStatic.ForeColor = System.Drawing.Color.GreenYellow;
             this.lStatic.Location = new System.Drawing.Point(474, 129);
             this.lStatic.Name = "lStatic";
-            this.lStatic.Size = new System.Drawing.Size(66, 42);
+            this.lStatic.Size = new System.Drawing.Size(88, 42);
             this.lStatic.TabIndex = 8;
             this.lStatic.Text = "480";
             this.lStatic.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -143,7 +182,7 @@
             this.lFreq.ForeColor = System.Drawing.Color.GreenYellow;
             this.lFreq.Location = new System.Drawing.Point(474, 190);
             this.lFreq.Name = "lFreq";
-            this.lFreq.Size = new System.Drawing.Size(66, 42);
+            this.lFreq.Size = new System.Drawing.Size(88, 42);
             this.lFreq.TabIndex = 7;
             this.lFreq.Text = "480";
             this.lFreq.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -189,41 +228,6 @@
             this.tStatic.TabIndex = 3;
             this.tStatic.Scroll += new System.EventHandler(this.tStatic_Scroll);
             // 
-            // tSend
-            // 
-            this.tSend.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tSend.Location = new System.Drawing.Point(51, 65);
-            this.tSend.Name = "tSend";
-            this.tSend.Size = new System.Drawing.Size(312, 22);
-            this.tSend.TabIndex = 1;
-            // 
-            // tabPage2
-            // 
-            this.tabPage2.Location = new System.Drawing.Point(4, 22);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(559, 394);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "tabPage2";
-            this.tabPage2.UseVisualStyleBackColor = true;
-            // 
-            // bClose
-            // 
-            this.bClose.BackColor = System.Drawing.Color.Tomato;
-            this.bClose.BorderColor = System.Drawing.Color.Black;
-            this.bClose.BorderWidth = 0;
-            this.bClose.DialogResult = System.Windows.Forms.DialogResult.None;
-            this.bClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bClose.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.bClose.Location = new System.Drawing.Point(435, 351);
-            this.bClose.Name = "bClose";
-            this.bClose.Radius = -1;
-            this.bClose.Size = new System.Drawing.Size(118, 37);
-            this.bClose.TabIndex = 12;
-            this.bClose.Text = "Close";
-            this.bClose.UseVisualStyleBackColor = false;
-            this.bClose.Click += new System.EventHandler(this.bClose_Click);
-            // 
             // bSend
             // 
             this.bSend.BackColor = System.Drawing.Color.MediumSeaGreen;
@@ -241,17 +245,39 @@
             this.bSend.UseVisualStyleBackColor = false;
             this.bSend.Click += new System.EventHandler(this.bSend_Click);
             // 
+            // tSend
+            // 
+            this.tSend.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tSend.Location = new System.Drawing.Point(51, 65);
+            this.tSend.Name = "tSend";
+            this.tSend.Size = new System.Drawing.Size(312, 22);
+            this.tSend.TabIndex = 1;
+            // 
+            // tabPage2
+            // 
+            this.tabPage2.Location = new System.Drawing.Point(4, 22);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Size = new System.Drawing.Size(756, 353);
+            this.tabPage2.TabIndex = 1;
+            // 
+            // timer1
+            // 
+            this.timer1.Enabled = true;
+            this.timer1.Interval = 50;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(565, 418);
+            this.ClientSize = new System.Drawing.Size(763, 377);
             this.Controls.Add(this.tabControl1);
             this.KeyPreview = true;
             this.Name = "Form1";
             this.Text = "Form1";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form1_FormClosed);
             this.Load += new System.EventHandler(this.Form1_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown_1);
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
@@ -265,20 +291,24 @@
         #endregion
 
         private System.Windows.Forms.TabControl tabControl1;
-        private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage tabPage2;
-        private System.Windows.Forms.TextBox tSend;
-        private TButton bSend;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TrackBar tStatic;
-        private System.Windows.Forms.Label lTone;
-        private System.Windows.Forms.TrackBar tTone;
-        private System.Windows.Forms.Label lFreq;
-        private System.Windows.Forms.Label lStatic;
+        private System.Windows.Forms.TabPage tabPage1;
+        private TButton bClose;
         private System.Windows.Forms.Label lDit;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TrackBar tDit;
-        private TButton bClose;
+        private System.Windows.Forms.Label lStatic;
+        private System.Windows.Forms.Label lFreq;
+        private System.Windows.Forms.Label lTone;
+        private System.Windows.Forms.TrackBar tTone;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TrackBar tStatic;
+        private TButton bSend;
+        private System.Windows.Forms.TextBox tSend;
+        private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Label lLeft;
+        private System.Windows.Forms.TextBox textBox1;
+      
     }
 }
 

@@ -10,8 +10,12 @@ namespace CWDog
     public static class MorseQueue
     {
         public static CWSound Current = null;
-
+        
         private static Queue<CWSound> Queue = new Queue<CWSound>();
+        public static int Remaining()
+        {
+            return Queue.Count;
+        }
         private static CWSound CWNone = new CWSound();
 
         public static void AddChar(Char c) {

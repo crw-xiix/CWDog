@@ -68,13 +68,11 @@ namespace CWDog
             {
                 dest[offset + i] = (float)(0.25 * Math.Sin((2 * Math.PI * samples * Frequency) / 16000.0));
                 samples++;
-                if (samples >= 16000) samples = 0;
-                ////buffer[n + offset] = (float)(Amplitude * Math.Sin((2 * Math.PI * sample * freq) / sampleRate));
+                //if (samples >= 16000) samples = 0;
             }
             return bsamples;
         }
     }
-    
 
     public class CWLetterBlank : CWDih
     {
@@ -91,8 +89,6 @@ namespace CWDog
             {
                 dest[offset + i] = 0;
                 samples++;
-                if (samples >= 16000) samples = 0;
-                ////buffer[n + offset] = (float)(Amplitude * Math.Sin((2 * Math.PI * sample * freq) / sampleRate));
             }
             return bsamples;
         }
@@ -120,20 +116,13 @@ namespace CWDog
         public CWDah(int frequency, int duration)
             : base(frequency, duration)
         {
-
         }
-       
-
     }
     public class CWSpace : CWDih
     {
         public CWSpace(int frequency, int duration)
             : base(frequency, duration)
         {
-
-
         }
-        
-
     }
 }

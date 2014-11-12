@@ -10,6 +10,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
 using System.Reflection;
+using System.Speech.Synthesis; 
+
 
 namespace CWDog
 {
@@ -36,12 +38,14 @@ namespace CWDog
         {
 
         }
-
+        SpeechSynthesizer reader = new SpeechSynthesizer(); //declare the object 
         private void Form1_Load(object sender, EventArgs e)
         {
             tStatic.Value = Config.StaticLevel.value;
             tTone.Value = Config.ToneFrequency.value;
             tDit.Value = Config.Dit.value;
+            
+
             
 
         }
@@ -128,6 +132,18 @@ namespace CWDog
         private void bClose_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            lLeft.Text = MorseQueue.Remaining().ToString();
+
+        }
+
+        private void Form1_KeyDown_1(object sender, KeyEventArgs e)
+        {
+            //reader.Speak("Alpha");
+            //MorseQueue.AddWord("A");
         }
     }
 
