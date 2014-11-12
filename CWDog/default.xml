@@ -7,6 +7,8 @@
   <Dah>150</Dah>
   <Letter>50</Letter>
   <Space>350</Space>
+  <BitRate>16000</BitRate>
+  <Channels>1</Channels>
   <Keys>
     <Letters>
       <A active="True">-.</A>

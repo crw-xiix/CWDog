@@ -8,6 +8,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
+using System.Reflection;
 
 namespace CWDog
 {
@@ -17,7 +19,14 @@ namespace CWDog
         public Form1()
         {
             InitializeComponent();
-            Config.Save();
+            Config.Load();
+
+            
+            
+   
+
+
+
         }
 
         private void tabPage1_Click(object sender, EventArgs e)

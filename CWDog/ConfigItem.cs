@@ -16,7 +16,7 @@ namespace CWDog
         public interface ConfigItem
         {
             bool Read(XmlDocument src);
-            //bool Write(XmlDocument dest);
+            string ToXML();
         }
 
         public class CIItem : ConfigItem
@@ -31,6 +31,7 @@ namespace CWDog
                 BaseUri = "/" + name;
                 Where = where;
             }
+            public virtual string ToXML() { return "\r\n"; }
 
         }
 
@@ -68,6 +69,9 @@ namespace CWDog
             {
                 x.Editor = editor;
                 return x;
+            }
+            public virtual string ToXML() {
+                return "<" + BaseUri + ">" + value.ToString() + "</" + BaseUri + ">\r\b";
             }
         }
 
@@ -107,6 +111,9 @@ namespace CWDog
             {
                 x.Editor = editor;
                 return x;
+            }
+            public virtual string ToXML() {
+                return "<" + BaseUri + ">" + value.ToString() + "</" + BaseUri + ">\r\b";
             }
         }
 
@@ -194,8 +201,4 @@ namespace CWDog
                 return st;
             }
         }
-
-   
-
-    
 }
