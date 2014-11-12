@@ -6,6 +6,7 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using System.Xml;
 
 namespace CWDog
@@ -21,6 +22,7 @@ namespace CWDog
         public static CIInt Space = new CIInt("/Space", ConfigCat.General);
         public static CIInt BitRate = new CIInt("/BitRate", ConfigCat.General);
         public static CIInt Channels = new CIInt("/Channels", ConfigCat.General);
+        public static CIInt StaticLevel = new CIInt("/StaticLevel", ConfigCat.General);
 
         public static CIKeyList Keys = new CIKeyList("/Keys", ConfigCat.Keys);
 
@@ -43,10 +45,7 @@ namespace CWDog
             try
             {
                 RegistryKey key = Registry.LocalMachine.OpenSubKey("Software", true);
-                //key.CreateSubKey("CWDog");
                 key = key.OpenSubKey("CWDog", true);
-
-                
                 xml = (string) key.GetValue("XML");
                 key.Close();
             }
@@ -63,10 +62,6 @@ namespace CWDog
             XmlDocument temp = new XmlDocument();
             temp.Load(new StringReader(xml));
             return Load(temp);
-
-
-
-            
         }
 
         public static bool Load(XmlDocument doc)
@@ -84,7 +79,7 @@ namespace CWDog
                     }
                     catch (Exception e)
                     {
-                        string st = v.ToString() + ":" + e.ToString();
+                        MessageBox.Show(v.ToString() + ":" + e.ToString());
                     }
                 }
 
@@ -104,9 +99,9 @@ namespace CWDog
             XmlDocument doc = new XmlDocument();
             doc.Load(_textStreamReader);
             Config.Load(doc);
+
+            Config.Save();
             return true;
         }
-
-
     }
 }

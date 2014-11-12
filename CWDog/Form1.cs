@@ -20,13 +20,16 @@ namespace CWDog
         {
             InitializeComponent();
             Config.Load();
-
-            
-            
-   
-
-
-
+            if (waveOut == null)
+            {
+                sineWaveProvider = new SineWaveProvider32();
+                sineWaveProvider.SetWaveFormat(16000, 1); // 16kHz mono
+                sineWaveProvider.Frequency = 1000;
+                sineWaveProvider.Amplitude = 0.25f;
+                waveOut = new WaveOut();
+                waveOut.Init(sineWaveProvider);
+                waveOut.Play();
+            }
         }
 
         private void tabPage1_Click(object sender, EventArgs e)
@@ -75,6 +78,38 @@ namespace CWDog
         private void Form1_KeyUp(object sender, KeyEventArgs e)
         {
             sineWaveProvider.on = false;
+        }
+
+        private void bSend_Click(object sender, EventArgs e)
+        {
+            String st = tSend.Text.Trim().ToUpper();
+            MorseQueue.AddString(st);
+        }
+
+        private void Form1_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            waveOut.Stop();
+            waveOut.Dispose();
+            waveOut = null;
+        }
+
+        private void tStatic_Scroll(object sender, EventArgs e)
+        {
+            Config.StaticLevel.value = tStatic.Value;
+            lStatic.Text = tStatic.Value.ToString() + "%";
+
+        }
+
+        private void tTone_Scroll(object sender, EventArgs e)
+        {
+            Config.ToneFrequency.value = tTone.Value;
+            lFreq.Text = tTone.Value.ToString() + " Hz";
+        }
+
+        private void tSend_TextChanged(object sender, EventArgs e)
+        {
+            
+
         }
     }
 
@@ -129,20 +164,15 @@ namespace CWDog
         public override int Read(float[] buffer, int offset, int sampleCount)
         {
             int sampleRate = WaveFormat.SampleRate;
+            int lstatic = Config.StaticLevel.value;
+            int freq = Config.ToneFrequency.value;
+
+            MorseQueue.Read(buffer, offset, sampleCount);
+            //buffer[n + offset] = (float)(Amplitude * Math.Sin((2 * Math.PI * sample * freq) / sampleRate));
+
             for (int n = 0; n < sampleCount; n++)
             {
-                if (on)
-                {
-                    buffer[n + offset] = (float)(Amplitude * Math.Sin((2 * Math.PI * sample * Frequency) / sampleRate));
-                    buffer[n + offset] += (float)(r.NextDouble() - 0.5) * 2;
-                }
-                else
-                {
-                    buffer[n + offset] = 0;
-                }
-
-                sample++;
-                if (sample >= sampleRate) sample = 0;
+                buffer[n + offset] += (float)(((r.NextDouble() - 0.5) * lstatic )/ 100.0);
             }
             return sampleCount;
         }

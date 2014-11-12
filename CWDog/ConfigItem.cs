@@ -186,7 +186,9 @@ namespace CWDog
                     MorseKey temp = new MorseKey();
                     temp.Key = node.Name.Trim();
                     temp.Morse = node.InnerText.Trim();
-                    if (node.Attributes["Active"].Value.ToString().ToUpper() == "TRUE") temp.Active = true;
+                    if (node.Attributes["active"] != null) if (node.Attributes["active"].Value.ToString().ToUpper() == "TRUE") temp.Active = true;
+                    
+
                     Values[temp.Key] = temp;
                 }
                 return true;

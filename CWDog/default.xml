@@ -10,22 +10,43 @@
   <BitRate>16000</BitRate>
   <Channels>1</Channels>
   <Keys>
-    <Letters>
-      <A active="True">-.</A>
-      <B active="True"></B>
-      <C active="True">-.-.</C>
-      <D active="True">.--</D>
-      <E active="True">.</E>
-      <F active="True"></F>
-      <G active="True"></G>
-    </Letters>
-    <Numbers>
-      <D0 active="True">-----</D0>
-      <D9 active="True"></D9>
-    </Numbers>
-    <Punctuation>
-      <Comma>Error - FUBAR</Comma>
-    </Punctuation>
+    <A active="True">-.</A>
+    <B active="True">-...</B>
+    <C active="True">-.-.</C>
+    <D active="True">.--</D>
+    <E active="True">.</E>
+    <F active="True">..-.</F>
+    <G active="True">--.</G>
+    <H active="True">....</H>
+    <I active="True">..</I>
+    <J active="True">.---</J>
+    <K active="True">-.-</K>
+    <L active="True">.-..</L>
+    <M active="True">--</M>
+    <N active="True">-.</N>
+    <O active="True">---"</O>
+    <P active="True">.--.</P>
+    <Q active="True">---</Q>
+    <R active="True">_..</R>
+    <S active="True">...</S>
+    <T active="True">-</T>
+    <U active="True">..-</U>
+    <V active="True">...-</V>
+    <W active="True">.--</W>
+    <X active="True">-..-</X>
+    <Y active="True">-.--</Y>
+    <Z active="True">--..</Z>
+    <D0 active="True">-----</D0>
+    <D1 active="True">.----</D1>
+    <D2 active="True">..---</D2>
+    <D3 active="True">...--</D3>
+    <D4 active="True">....-</D4>
+    <D5 active="True">.....</D5>
+    <D6 active="True">-....</D6>
+    <D7 active="True">--...</D7>
+    <D8 active="True">---..</D8>
+    <D9 active="True">----.</D9>
+    <Comma actve="True">Error - FUBAR</Comma>
   </Keys>
 </CWDog>
 
