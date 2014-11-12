@@ -30,6 +30,9 @@
         {
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.lDit = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.tDit = new System.Windows.Forms.TrackBar();
             this.lStatic = new System.Windows.Forms.Label();
             this.lFreq = new System.Windows.Forms.Label();
             this.lTone = new System.Windows.Forms.Label();
@@ -41,6 +44,7 @@
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.tDit)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tTone)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tStatic)).BeginInit();
             this.SuspendLayout();
@@ -60,6 +64,9 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.lDit);
+            this.tabPage1.Controls.Add(this.label3);
+            this.tabPage1.Controls.Add(this.tDit);
             this.tabPage1.Controls.Add(this.lStatic);
             this.tabPage1.Controls.Add(this.lFreq);
             this.tabPage1.Controls.Add(this.lTone);
@@ -76,6 +83,42 @@
             this.tabPage1.Text = "tabPage1";
             this.tabPage1.UseVisualStyleBackColor = true;
             this.tabPage1.Click += new System.EventHandler(this.tabPage1_Click);
+            // 
+            // lDit
+            // 
+            this.lDit.BackColor = System.Drawing.SystemColors.ControlText;
+            this.lDit.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lDit.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lDit.ForeColor = System.Drawing.Color.GreenYellow;
+            this.lDit.Location = new System.Drawing.Point(474, 251);
+            this.lDit.Name = "lDit";
+            this.lDit.Size = new System.Drawing.Size(66, 42);
+            this.lDit.TabIndex = 11;
+            this.lDit.Text = "480";
+            this.lDit.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(48, 235);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(104, 13);
+            this.label3.TabIndex = 10;
+            this.label3.Text = "Dit Time (ms) 10-250";
+            // 
+            // tDit
+            // 
+            this.tDit.LargeChange = 50;
+            this.tDit.Location = new System.Drawing.Point(51, 251);
+            this.tDit.Maximum = 250;
+            this.tDit.Minimum = 10;
+            this.tDit.Name = "tDit";
+            this.tDit.Size = new System.Drawing.Size(417, 42);
+            this.tDit.SmallChange = 50;
+            this.tDit.TabIndex = 9;
+            this.tDit.TickFrequency = 20;
+            this.tDit.Value = 250;
+            this.tDit.Scroll += new System.EventHandler(this.tDit_Scroll);
             // 
             // lStatic
             // 
@@ -193,6 +236,7 @@
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.tDit)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tTone)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tStatic)).EndInit();
             this.ResumeLayout(false);
@@ -212,6 +256,9 @@
         private System.Windows.Forms.TrackBar tTone;
         private System.Windows.Forms.Label lFreq;
         private System.Windows.Forms.Label lStatic;
+        private System.Windows.Forms.Label lDit;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TrackBar tDit;
     }
 }
 

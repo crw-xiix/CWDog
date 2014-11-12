@@ -39,6 +39,9 @@ namespace CWDog
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            tStatic.Value = Config.StaticLevel.value;
+            tTone.Value = Config.ToneFrequency.value;
+            tDit.Value = Config.Dit.value;
             
 
         }
@@ -109,6 +112,16 @@ namespace CWDog
         private void tSend_TextChanged(object sender, EventArgs e)
         {
             
+
+        }
+
+        private void tDit_Scroll(object sender, EventArgs e)
+        {
+            Config.Dit.value = tDit.Value;
+            lDit.Text = tDit.Value.ToString() + " ms";
+            Config.Dah.value = tDit.Value * 3;
+            Config.Letter.value = tDit.Value * 3;
+            Config.Space.value = tDit.Value * 7;
 
         }
     }

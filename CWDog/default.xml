@@ -3,9 +3,9 @@
   <ToneFrequency>1000</ToneFrequency>
   <StaticLevel>0.10</StaticLevel>
   <WPM>5</WPM>
-  <Dit>50</Dit>
-  <Dah>150</Dah>
-  <Letter>50</Letter>
+  <Dit>25</Dit>
+  <Dah>75</Dah>
+  <Letter>75</Letter>
   <Space>350</Space>
   <BitRate>16000</BitRate>
   <Channels>1</Channels>
@@ -27,7 +27,7 @@
     <O active="True">---"</O>
     <P active="True">.--.</P>
     <Q active="True">---</Q>
-    <R active="True">_..</R>
+    <R active="True">-..</R>
     <S active="True">...</S>
     <T active="True">-</T>
     <U active="True">..-</U>
@@ -46,6 +46,7 @@
     <D7 active="True">--...</D7>
     <D8 active="True">---..</D8>
     <D9 active="True">----.</D9>
+    <SPACE active="True"> </SPACE>
     <Comma actve="True">Error - FUBAR</Comma>
   </Keys>
 </CWDog>

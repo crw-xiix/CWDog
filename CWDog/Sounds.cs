@@ -84,7 +84,16 @@ namespace CWDog
 
         public override int getAudioData(float[] dest, int offset, int length)
         {
-            return 0;
+            int bsamples = Math.Min(length, getRemaining());
+
+            for (int i = 0; i < bsamples; i++)
+            {
+                dest[offset + i] = 0;
+                samples++;
+                if (samples >= 16000) samples = 0;
+                ////buffer[n + offset] = (float)(Amplitude * Math.Sin((2 * Math.PI * sample * freq) / sampleRate));
+            }
+            return bsamples;
         }
     }
 

@@ -14,14 +14,17 @@ namespace CWDog
         private static Queue<CWSound> Queue = new Queue<CWSound>();
         private static CWSound CWNone = new CWSound();
 
-        public static void AddChar(Char c) { 
-            
+        public static void AddChar(Char c) {
+            string lu = "" + c;
+            if (Char.IsDigit(c)) lu = "D" + c;
+            if (c == ' ') lu = "SPACE";
+
             //Check config for stuff.
-            if (!Config.Keys.Values.ContainsKey(c.ToString())) {
-                   MessageBox.Show(c + " not found");
+            if (!Config.Keys.Values.ContainsKey(lu)) {
+                   MessageBox.Show(lu + " not found");
                 return;
             }
-            MorseKey k = Config.Keys.Values[c.ToString()];
+            MorseKey k = Config.Keys.Values[lu];
             foreach (Char ch in k.Morse) {
                 switch (ch) {
                     case '.' : 
@@ -34,7 +37,7 @@ namespace CWDog
                         Queue.Enqueue(new CWDah(Config.ToneFrequency,Config.Space.value));
                         break;
                }
-            Queue.Enqueue(new CWDihBlank(Config.ToneFrequency,Config.Space.value));
+            Queue.Enqueue(new CWDihBlank(Config.ToneFrequency,Config.Letter.value));
             }
         }
         public static void AddWord(String s) {
