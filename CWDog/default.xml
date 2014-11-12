@@ -2,21 +2,30 @@
 <CWDog>
   <ToneFrequency>1000</ToneFrequency>
   <StaticLevel>0.10</StaticLevel>
-  <WPM>5</WPM>  
+  <WPM>5</WPM>
   <Dit>50</Dit>
   <Dah>150</Dah>
   <Letter>50</Letter>
   <Space>350</Space>
   <Keys>
-    <A active="True">-.</A>
-    <B active="True"></B>
-    <C active="True">-.-.</C>
-    <D active="True"> active="True"</D>
-    <E active="True">.</E>
-    <F active="True"></F>
-    <G active="True"></G>
-    <D0 active="True">-----</D0>
-    <D9 active="True"></D9>
+    <Letters>
+      <A active="True">-.</A>
+      <B active="True"></B>
+      <C active="True">-.-.</C>
+      <D active="True">.--</D>
+      <E active="True">.</E>
+      <F active="True"></F>
+      <G active="True"></G>
+    </Letters>
+    <Numbers>
+
+
+      <D0 active="True">-----</D0>
+      <D9 active="True"></D9>
+    </Numbers>
+    <Punctuation>
+      <Comma>Error - FUBAR</Comma>
+    </Punctuation>
   </Keys>
 </CWDog>
 
