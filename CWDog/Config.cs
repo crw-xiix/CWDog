@@ -9,11 +9,16 @@ namespace CWDog
 {
     class Config
     {
-        public static int toneFrequency = 440;
-        public static int WPM = 5;
-        public static double perfFreq = 1000;
-        public static int bitRate = 28000;
-        public Dictionary<string, string> KeyMap;
+
+        public static CIInt ToneFrequency = new CIInt("/ToneFrequency", ConfigCat.General);
+        public static CIInt WPM = new CIInt("/WPM", ConfigCat.General);
+        public static CIInt Dit = new CIInt("/Dit", ConfigCat.General);
+        public static CIInt Dah = new CIInt("/Dah", ConfigCat.General);
+        public static CIInt Letter = new CIInt("/Letter", ConfigCat.General);
+        public static CIInt Space = new CIInt("/Space", ConfigCat.General);
+        public static CIInt BitRate = new CIInt("/BitRate", ConfigCat.General);
+
+        public static CIKeyList Keys = new CIKeyList("/Keys", ConfigCat.Keys);
 
 
         public static void Save()
