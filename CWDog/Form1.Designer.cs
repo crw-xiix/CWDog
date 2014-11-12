@@ -39,9 +39,10 @@
             this.tTone = new System.Windows.Forms.TrackBar();
             this.label1 = new System.Windows.Forms.Label();
             this.tStatic = new System.Windows.Forms.TrackBar();
-            this.bSend = new CWDog.TButton();
             this.tSend = new System.Windows.Forms.TextBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.bClose = new CWDog.TButton();
+            this.bSend = new CWDog.TButton();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tDit)).BeginInit();
@@ -64,6 +65,7 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.bClose);
             this.tabPage1.Controls.Add(this.lDit);
             this.tabPage1.Controls.Add(this.label3);
             this.tabPage1.Controls.Add(this.tDit);
@@ -187,23 +189,6 @@
             this.tStatic.TabIndex = 3;
             this.tStatic.Scroll += new System.EventHandler(this.tStatic_Scroll);
             // 
-            // bSend
-            // 
-            this.bSend.BackColor = System.Drawing.Color.MediumSeaGreen;
-            this.bSend.BorderColor = System.Drawing.Color.Black;
-            this.bSend.BorderWidth = 0;
-            this.bSend.DialogResult = System.Windows.Forms.DialogResult.None;
-            this.bSend.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bSend.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.bSend.Location = new System.Drawing.Point(369, 58);
-            this.bSend.Name = "bSend";
-            this.bSend.Radius = -1;
-            this.bSend.Size = new System.Drawing.Size(110, 38);
-            this.bSend.TabIndex = 2;
-            this.bSend.Text = "Translate";
-            this.bSend.UseVisualStyleBackColor = false;
-            this.bSend.Click += new System.EventHandler(this.bSend_Click);
-            // 
             // tSend
             // 
             this.tSend.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -221,6 +206,40 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "tabPage2";
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // bClose
+            // 
+            this.bClose.BackColor = System.Drawing.Color.Tomato;
+            this.bClose.BorderColor = System.Drawing.Color.Black;
+            this.bClose.BorderWidth = 0;
+            this.bClose.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.bClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bClose.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.bClose.Location = new System.Drawing.Point(435, 351);
+            this.bClose.Name = "bClose";
+            this.bClose.Radius = -1;
+            this.bClose.Size = new System.Drawing.Size(118, 37);
+            this.bClose.TabIndex = 12;
+            this.bClose.Text = "Close";
+            this.bClose.UseVisualStyleBackColor = false;
+            this.bClose.Click += new System.EventHandler(this.bClose_Click);
+            // 
+            // bSend
+            // 
+            this.bSend.BackColor = System.Drawing.Color.MediumSeaGreen;
+            this.bSend.BorderColor = System.Drawing.Color.Black;
+            this.bSend.BorderWidth = 0;
+            this.bSend.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.bSend.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bSend.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.bSend.Location = new System.Drawing.Point(369, 58);
+            this.bSend.Name = "bSend";
+            this.bSend.Radius = -1;
+            this.bSend.Size = new System.Drawing.Size(110, 38);
+            this.bSend.TabIndex = 2;
+            this.bSend.Text = "Translate";
+            this.bSend.UseVisualStyleBackColor = false;
+            this.bSend.Click += new System.EventHandler(this.bSend_Click);
             // 
             // Form1
             // 
@@ -259,6 +278,7 @@
         private System.Windows.Forms.Label lDit;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TrackBar tDit;
+        private TButton bClose;
     }
 }
 

@@ -74,10 +74,11 @@ namespace CWDog
             return bsamples;
         }
     }
+    
 
-    public class CWDihBlank : CWDih
+    public class CWLetterBlank : CWDih
     {
-        public CWDihBlank(int frequency, int duration)
+        public CWLetterBlank(int frequency, int duration)
             : base(frequency, duration)
         {
         }
@@ -96,8 +97,23 @@ namespace CWDog
             return bsamples;
         }
     }
+    public class CWCodeBlank : CWLetterBlank
+    {
+        public CWCodeBlank(int frequency, int duration)
+            : base(frequency, duration)
+        {
+        }
 
+    }
 
+    public class CWWordBlank : CWLetterBlank
+    {
+        public CWWordBlank(int frequency, int duration)
+            : base(frequency, duration)
+        {
+        }
+    }
+    
 
     public class CWDah : CWDih
     {

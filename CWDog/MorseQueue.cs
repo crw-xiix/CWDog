@@ -34,11 +34,12 @@ namespace CWDog
                         Queue.Enqueue(new CWDah(Config.ToneFrequency,Config.Dah.value));
                         break;
                     case ' ' :
-                        Queue.Enqueue(new CWDah(Config.ToneFrequency,Config.Space.value));
+                        Queue.Enqueue(new CWWordBlank(Config.ToneFrequency,Config.Space.value));
                         break;
                }
-            Queue.Enqueue(new CWDihBlank(Config.ToneFrequency,Config.Letter.value));
+            Queue.Enqueue(new CWCodeBlank(Config.ToneFrequency,Config.Dit.value));
             }
+            Queue.Enqueue(new CWLetterBlank(Config.ToneFrequency, Config.Letter.value));
         }
         public static void AddWord(String s) {
             s = s.Trim();
@@ -71,6 +72,7 @@ namespace CWDog
                     Queue.Dequeue();
                     if (Queue.Count == 0)
                     {
+                        string st = "break";
                         return CWNone.getAudioData(buffer, offset, sampleCount);
                     }
                 }

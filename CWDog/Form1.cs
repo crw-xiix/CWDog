@@ -124,6 +124,11 @@ namespace CWDog
             Config.Space.value = tDit.Value * 7;
 
         }
+
+        private void bClose_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
     }
 
     public abstract class WaveProvider32 : IWaveProvider
