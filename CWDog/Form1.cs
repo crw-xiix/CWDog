@@ -17,6 +17,7 @@ namespace CWDog
         public Form1()
         {
             InitializeComponent();
+            Config.Save();
         }
 
         private void tabPage1_Click(object sender, EventArgs e)
@@ -36,7 +37,7 @@ namespace CWDog
             if (waveOut == null)
             {
                 sineWaveProvider = new SineWaveProvider32();
-                sineWaveProvider.SetWaveFormat(48000, 2); // 16kHz mono
+                sineWaveProvider.SetWaveFormat(16000, 1); // 16kHz mono
                 sineWaveProvider.Frequency = 1000;
                 sineWaveProvider.Amplitude = 0.25f;
                 waveOut = new WaveOut();
