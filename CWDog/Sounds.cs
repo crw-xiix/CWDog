@@ -63,10 +63,26 @@ namespace CWDog
         public override int getAudioData(float[] dest, int offset, int length)
         {
             int bsamples = Math.Min(length,getRemaining());
-
+            double volume = 0.0f;
             for (int i = 0; i < bsamples; i++)
             {
-                dest[offset + i] = (float)(0.25 * Math.Sin((2 * Math.PI * samples * Frequency) / 16000.0));
+                //1/100 a second to fade in.
+
+                if (samples < 160)
+                {
+                    volume = ((samples * 0.25) / (Config.BitRate.value/100));
+                }
+                else volume = 0.25f;
+                int left = (int) sampledur - samples;
+                if (left < 160)
+                {
+                    volume = ((left * 0.25) / (Config.BitRate.value / 100));
+                };
+
+
+
+
+                dest[offset + i] = (float)(volume * Math.Sin((2 * Math.PI * samples * Frequency) / 16000.0));
                 samples++;
                 //if (samples >= 16000) samples = 0;
             }
