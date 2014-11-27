@@ -45,6 +45,38 @@ namespace CWDog
             }
             Queue.Enqueue(new CWLetterBlank(Config.ToneFrequency, Config.Letter.value));
         }
+        public static void AddMorse(Char c)
+        {
+            string lu = "" + c;
+            if (Char.IsDigit(c)) lu = "D" + c;
+            if (c == ' ') lu = "SPACE";
+
+            //Check config for stuff.
+            if (!Config.Keys.Values.ContainsKey(lu))
+            {
+                MessageBox.Show(lu + " not found");
+                return;
+            }
+            MorseKey k = Config.Keys.Values[lu];
+            foreach (Char ch in k.Morse)
+            {
+                switch (ch)
+                {
+                    case '.':
+                        Queue.Enqueue(new CWDih(Config.ToneFrequency, Config.Dit.value));
+                        break;
+                    case '-':
+                        Queue.Enqueue(new CWDah(Config.ToneFrequency, Config.Dah.value));
+                        break;
+                    case ' ':
+                        Queue.Enqueue(new CWWordBlank(Config.ToneFrequency, Config.Space.value));
+                        break;
+                }
+                Queue.Enqueue(new CWCodeBlank(Config.ToneFrequency, Config.Dit.value));
+            }
+            //Queue.Enqueue(new CWLetterBlank(Config.ToneFrequency, Config.Letter.value));
+        }
+ 
         public static void AddWord(String s) {
             s = s.Trim();
             foreach (char c in s) {AddChar(c);}

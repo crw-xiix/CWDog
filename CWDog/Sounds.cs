@@ -17,11 +17,21 @@ namespace CWDog
         /// <returns></returns>
         public virtual int getAudioData(float[] dest, int offset, int length)
         {
-            for (int i = 0; i < length; i++)
+              int bsamples = Math.Min(length,getRemaining());
+            double volume = 0.0f;
+            for (int i = 0; i < bsamples; i++)
             {
-                dest[i] = 0.0f;
+                //1/100 a second to fade in.
+
+
+
+
+
+                dest[offset + i] = (float)0.0;
+                //samples++;
             }
-            return length;
+                return bsamples;
+
         }
         public virtual int getRemaining()
         {

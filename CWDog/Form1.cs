@@ -142,6 +142,15 @@ namespace CWDog
 
         private void Form1_KeyDown_1(object sender, KeyEventArgs e)
         {
+            if (e.KeyData == Keys.E)           {
+                MorseQueue.AddMorse('E');
+            }
+            if (e.KeyData == Keys.T)
+            {
+                MorseQueue.AddMorse('T');
+            }
+            //reader.Speak("Alpha");
+
             //reader.Speak("Alpha");
             //MorseQueue.AddWord("A");
         }
