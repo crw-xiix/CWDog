@@ -1,0 +1,86 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<asmv1:assembly xsi:schemaLocation="urn:schemas-microsoft-com:asm.v1 assembly.adaptive.xsd" manifestVersion="1.0" xmlns:asmv1="urn:schemas-microsoft-com:asm.v1" xmlns="urn:schemas-microsoft-com:asm.v2" xmlns:asmv2="urn:schemas-microsoft-com:asm.v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:co.v1="urn:schemas-microsoft-com:clickonce.v1" xmlns:asmv3="urn:schemas-microsoft-com:asm.v3" xmlns:dsig="http://www.w3.org/2000/09/xmldsig#" xmlns:co.v2="urn:schemas-microsoft-com:clickonce.v2">
+  <asmv1:assemblyIdentity name="CWDog.exe" version="1.0.0.0" publicKeyToken="f074fecdff14f496" language="neutral" processorArchitecture="msil" type="win32" />
+  <application />
+  <entryPoint>
+    <assemblyIdentity name="CWDog" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
+    <commandLine file="CWDog.exe" parameters="" />
+  </entryPoint>
+  <trustInfo>
+    <security>
+      <applicationRequestMinimum>
+        <PermissionSet Unrestricted="true" ID="Custom" SameSite="site" />
+        <defaultAssemblyRequest permissionSetReference="Custom" />
+      </applicationRequestMinimum>
+      <requestedPrivileges xmlns="urn:schemas-microsoft-com:asm.v3">
+        <!--
+          UAC Manifest Options
+          If you want to change the Windows User Account Control level replace the 
+          requestedExecutionLevel node with one of the following.
+
+        <requestedExecutionLevel  level="asInvoker" uiAccess="false" />
+        <requestedExecutionLevel  level="requireAdministrator" uiAccess="false" />
+        <requestedExecutionLevel  level="highestAvailable" uiAccess="false" />
+
+         If you want to utilize File and Registry Virtualization for backward 
+         compatibility then delete the requestedExecutionLevel node.
+    -->
+        <requestedExecutionLevel level="asInvoker" uiAccess="false" />
+      </requestedPrivileges>
+    </security>
+  </trustInfo>
+  <dependency>
+    <dependentOS>
+      <osVersionInfo>
+        <os majorVersion="5" minorVersion="1" buildNumber="2600" servicePackMajor="0" />
+      </osVersionInfo>
+    </dependentOS>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="preRequisite" allowDelayedBinding="true">
+      <assemblyIdentity name="Microsoft.Windows.CommonLanguageRuntime" version="4.0.30319.0" />
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="CWDog.exe" size="32256">
+      <assemblyIdentity name="CWDog" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>N7Zti1Aiko84p80rgl+1m3MwVctNYOIglgkwh8INFuE=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="NAudio.dll" size="456704">
+      <assemblyIdentity name="NAudio" version="1.7.1.17" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>yfWUFTMZtIUgdgXLY8axSuvytfCYGOzPe4QHWxQvQH4=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <file name="CWDog.exe.config" size="187">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>xm4bo26HQ0LNVwz1vdPYtzhkpMnp2AI5i+f0b+OahTI=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="lessons.xml" size="308" writeableType="applicationData">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>Swsv5fQnhJEGFDcFryVv6XTUdZRCdPQJrnh2H4R1EzE=</dsig:DigestValue>
+    </hash>
+  </file>
+<publisherIdentity name="CN=charles-THINK\charles" issuerKeyHash="a4de5b1619b67419fad4eeb5f22a9233c131ff43" /><Signature Id="StrongNameSignature" xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /><SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha256" /><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" /><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /></Transforms><DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" /><DigestValue>NIkXe/0tIzOG/nFHwjhV5+ih6HzDUuDrzBx6zo9MVxY=</DigestValue></Reference></SignedInfo><SignatureValue>F7TsvA3rb+5HszIKmpGLVafXRrHt9/3mcBUpwmnLYaSEq56iuMymU2NMo4fstDqBtvftcfYukggaJNH4PsmcSvgxtZ8bAvWNyKvvAOmegVmRBpsDBDx6K8ANZs1RUgikBG49KovcJZP6w1vRas5M1WmhuL/gnVCMwpuCnnJMGuo=</SignatureValue><KeyInfo Id="StrongNameKeyInfo"><KeyValue><RSAKeyValue><Modulus>15cmCHbCrS0aoGheU9CuxIyhI7W/VemyB96mqCugW6tW7tfM4P2rR4krmQxjIjyq31KbWyjVAPRUvBWmVx3fCUUBcHKi7ba6XUPBl8yXragNhblAjXWlJVKNXbzx5yEWBM3RWppPhcb5lVr17di9USWFprnnCmQHYKDJTcONmSE=</Modulus><Exponent>AQAB</Exponent></RSAKeyValue></KeyValue><msrel:RelData xmlns:msrel="http://schemas.microsoft.com/windows/rel/2005/reldata"><r:license xmlns:r="urn:mpeg:mpeg21:2003:01-REL-R-NS" xmlns:as="http://schemas.microsoft.com/windows/pki/2005/Authenticode"><r:grant><as:ManifestInformation Hash="16574c8fce7a1cccebe052c37ce8a1e8e75538c24771fe8633232dfd7b178934" Description="" Url=""><as:assemblyIdentity name="CWDog.exe" version="1.0.0.0" publicKeyToken="f074fecdff14f496" language="neutral" processorArchitecture="msil" type="win32" /></as:ManifestInformation><as:SignedBy /><as:AuthenticodePublisher><as:X509SubjectName>CN=charles-THINK\charles</as:X509SubjectName></as:AuthenticodePublisher></r:grant><r:issuer><Signature Id="AuthenticodeSignature" xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /><SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha256" /><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" /><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /></Transforms><DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" /><DigestValue>l0oXZUd+wNVW2EVYYuFH1a250wdcBQH2+aKlXugij0I=</DigestValue></Reference></SignedInfo><SignatureValue>dSH4tamLTC5j2B/TcvobwHlDWYOLSyDmfCjb2RnzVu8+OJn9pwFvnlGbgVt46B4GmjbjJWTXzkM9rIfKbChC3gd3iFrJJED08voFKHcXTJNdRLimSVx0eD2QY/zlLLS+SaD5Ng0xWZ5nTVVcgV357q/fzSjASiQSNo4kXXT3asE=</SignatureValue><KeyInfo><KeyValue><RSAKeyValue><Modulus>15cmCHbCrS0aoGheU9CuxIyhI7W/VemyB96mqCugW6tW7tfM4P2rR4krmQxjIjyq31KbWyjVAPRUvBWmVx3fCUUBcHKi7ba6XUPBl8yXragNhblAjXWlJVKNXbzx5yEWBM3RWppPhcb5lVr17di9USWFprnnCmQHYKDJTcONmSE=</Modulus><Exponent>AQAB</Exponent></RSAKeyValue></KeyValue><X509Data><X509Certificate>MIIB7TCCAVagAwIBAgIQX/XNSb7PH7tMl945PstGfTANBgkqhkiG9w0BAQsFADA1MTMwMQYDVQQDHioAYwBoAGEAcgBsAGUAcwAtAFQASABJAE4ASwBcAGMAaABhAHIAbABlAHMwHhcNMTQxMTI3MjE0NTQ2WhcNMTUxMTI4MDM0NTQ2WjA1MTMwMQYDVQQDHioAYwBoAGEAcgBsAGUAcwAtAFQASABJAE4ASwBcAGMAaABhAHIAbABlAHMwgZ8wDQYJKoZIhvcNAQEBBQADgY0AMIGJAoGBANeXJgh2wq0tGqBoXlPQrsSMoSO1v1XpsgfepqgroFurVu7XzOD9q0eJK5kMYyI8qt9Sm1so1QD0VLwVplcd3wlFAXByou22ul1DwZfMl62oDYW5QI11pSVSjV288echFgTN0VqaT4XG+ZVa9e3YvVElhaa55wpkB2CgyU3DjZkhAgMBAAEwDQYJKoZIhvcNAQELBQADgYEAuAHK6zPTHW5HhaqHQvueF/5IRPppEkWU1HcOoG6YiA+zrVk4mA+sD4fcixdSvz+qG9UmnXCD1J0dPhzEJv670OUXU/nYaGzSdwKPkz7eSaK+/Wp6jnlZaTaRz4NLjYqsJtdlhALGK16adMq4l+lvQ9J9cOuB5MFhtszPmuMC85E=</X509Certificate></X509Data></KeyInfo></Signature></r:issuer></r:license></msrel:RelData></KeyInfo></Signature></asmv1:assembly>

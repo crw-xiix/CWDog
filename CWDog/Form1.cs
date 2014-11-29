@@ -10,14 +10,15 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
 using System.Reflection;
-using System.Speech.Synthesis; 
+using System.Speech.Synthesis;
+using System.Net; 
 
 
 namespace CWDog
 {
     public partial class Form1 : Form
     {
-        WaveOut waveOut = null;
+        IWavePlayer waveOut = null;
         public Form1()
         {
             InitializeComponent();
@@ -28,12 +29,16 @@ namespace CWDog
                 sineWaveProvider.SetWaveFormat(16000, 1); // 16kHz mono
                 sineWaveProvider.Frequency = 1000;
                 sineWaveProvider.Amplitude = 0.25f;
-                waveOut = new WaveOut();
+                waveOut = new DirectSoundOut(50);
+                //
+                //waveOut.DesiredLatency = 50;
+                //waveOut.NumberOfBuffers = 2;
+                
                 waveOut.Init(sineWaveProvider);
                 waveOut.Play();
             }
         }
-
+        public static bool md = false;
         private void tabPage1_Click(object sender, EventArgs e)
         {
 
@@ -49,32 +54,13 @@ namespace CWDog
             
 
         }
-        SineWaveProvider32 sineWaveProvider = new SineWaveProvider32();
+        SineWaveProvider32 sineWaveProvider = null;
             
-        private void StartStopSineWave()
-        {
-            if (waveOut == null)
-            {
-                sineWaveProvider = new SineWaveProvider32();
-                sineWaveProvider.SetWaveFormat(16000, 1); // 16kHz mono
-                sineWaveProvider.Frequency = 1000;
-                sineWaveProvider.Amplitude = 0.25f;
-                waveOut = new WaveOut();
-                waveOut.Init(sineWaveProvider);
-                waveOut.Play();
-            }
-            else
-            {
-                waveOut.Stop();
-                waveOut.Dispose();
-                waveOut = null;
-            }
-
-        }
+        
 
         private void button1_Click(object sender, EventArgs e)
         {
-            StartStopSineWave();
+           // StartStopSineWave();
         }
 
         private void Form1_KeyDown(object sender, KeyEventArgs e)
@@ -142,7 +128,7 @@ namespace CWDog
 
         private void Form1_KeyDown_1(object sender, KeyEventArgs e)
         {
-            if (e.KeyData == Keys.E)           {
+         /*   if (e.KeyData == Keys.E)           {
                 MorseQueue.AddMorse('E');
             }
             if (e.KeyData == Keys.T)
@@ -153,6 +139,98 @@ namespace CWDog
 
             //reader.Speak("Alpha");
             //MorseQueue.AddWord("A");
+          * */
+        }
+        long lastTick = 0;
+        StringBuilder toSend = null;
+        bool firstsend = true;
+        private void addSendKey(bool state)
+        {
+            
+            long diff = DateTime.Now.Ticks - lastTick;
+            if (diff > 50000000)
+            {
+                diff = 0;
+                //toSend = new StringBuilder();
+            }
+            if (toSend == null)
+            {
+                toSend = new StringBuilder();
+                firstsend = true;
+            }
+            toSend.Append((diff/10000).ToString()+",");
+            if (state)
+            {
+                toSend.Append("N,");
+            }
+            else
+            {
+                toSend.Append("F,");
+            }
+
+            lastTick = DateTime.Now.Ticks;
+        }
+
+        private void tabPage2_MouseDown(object sender, MouseEventArgs e)
+        {
+            md = true;
+            addSendKey(true);
+            
+        }
+
+        private void tabPage2_MouseUp(object sender, MouseEventArgs e)
+        {
+            md = false;
+            addSendKey(false);
+        }
+
+        private void tabControl1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (tabControl1.SelectedTab == tabControl1.TabPages[2]) {
+                if (e.KeyChar == 'e')           {
+                MorseQueue.AddMorse('E');
+            }
+            if (e.KeyChar == 't')
+            {
+                MorseQueue.AddMorse('T');
+            }
+            }
+            
+        }
+
+        private void timer2_Tick(object sender, EventArgs e)
+        {
+            if (toSend == null) return;
+            if ((!firstsend) || ((firstsend && ((DateTime.Now.Ticks - lastTick) > 3000000))))
+            {
+                
+                if (toSend.Length > 0)
+                {
+                    string st = toSend.ToString();//Time to post it.
+                    toSend = null;
+                    firstsend = false;
+                    
+                    string sURL;
+                    sURL = "http://trellend-001-site1.myasp.net/add.aspx?mess=" + st;
+
+                    WebRequest wrGETURL;
+                    wrGETURL = WebRequest.Create(sURL);
+                    //wrGETURL.GetResponseAsync
+
+
+                    wrGETURL.Timeout = 1000;
+                    try
+                    {
+                        wrGETURL.GetResponse();
+                        listBox1.Items.Add("Sent: " + st.Length);
+                    }
+                    catch (Exception ex) 
+                    {
+                        listBox1.Items.Add(ex.Message);
+                    }
+
+                }
+            }
         }
     }
 
@@ -195,6 +273,7 @@ namespace CWDog
         int sample;
         public bool on = true;
         Random r = new Random();
+        CWStraightKey sk = new CWStraightKey(660);
         public SineWaveProvider32()
         {
             Frequency = 1000;
@@ -203,20 +282,43 @@ namespace CWDog
 
         public float Frequency { get; set; }
         public float Amplitude { get; set; }
-
+        private float lastValue = 0;
+       
         public override int Read(float[] buffer, int offset, int sampleCount)
         {
+            float sampleDiv = 2.01f;
+            float sampleSca = sampleDiv / (sampleDiv + 1.0f);
+
             int sampleRate = WaveFormat.SampleRate;
             int lstatic = Config.StaticLevel.value;
             int freq = Config.ToneFrequency.value;
 
             MorseQueue.Read(buffer, offset, sampleCount);
             //buffer[n + offset] = (float)(Amplitude * Math.Sin((2 * Math.PI * sample * freq) / sampleRate));
-
+            //if (Form1.md) 
             for (int n = 0; n < sampleCount; n++)
             {
-                buffer[n + offset] += (float)(((r.NextDouble() - 0.5) * lstatic )/ 100.0);
+                buffer[n + offset] = (float)(((r.NextDouble() - 0.5) * lstatic) / 100.0);
             }
+
+            if (Form1.md)
+            {
+                sk.getAudioData(buffer, offset, sampleCount);
+            }
+            // averageSampleTime := (averageSampleTime + (elapsed/SampleDivisor)) *SampleScalar;
+            for (int n = 0; n < sampleCount; n++)
+            {
+                //    if (Form1.md)
+                lastValue = (lastValue + (buffer[n + offset] / sampleDiv)) * sampleSca;
+                buffer[n + offset] = lastValue;
+            }
+            if (Form1.md)
+            {
+                string st = "";
+            }
+
+            //Now we should process a little filtering here......
+
             return sampleCount;
         }
     }

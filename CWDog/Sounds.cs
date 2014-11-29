@@ -99,6 +99,23 @@ namespace CWDog
             return bsamples;
         }
     }
+    public class CWStraightKey : CWDih
+    {
+        public CWStraightKey(int frequency)
+            : base(frequency,20000)
+        {
+            Frequency = frequency;
+            
+            //sampledur = (int)((duration * Config.BitRate.value) / 1000.0);
+        }
+        public override int getRemaining()
+        {
+            return Int32.MaxValue;
+        }
+
+
+    }
+
 
     public class CWLetterBlank : CWDih
     {

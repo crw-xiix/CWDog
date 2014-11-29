@@ -30,7 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.Main = new System.Windows.Forms.TabPage();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.lLeft = new System.Windows.Forms.Label();
             this.bClose = new CWDog.TButton();
@@ -46,12 +46,17 @@
             this.bSend = new CWDog.TButton();
             this.tSend = new System.Windows.Forms.TextBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.label2 = new System.Windows.Forms.Label();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.timer2 = new System.Windows.Forms.Timer(this.components);
+            this.listBox1 = new System.Windows.Forms.ListBox();
             this.tabControl1.SuspendLayout();
-            this.tabPage1.SuspendLayout();
+            this.Main.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tDit)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tTone)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tStatic)).BeginInit();
+            this.tabPage2.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -59,38 +64,40 @@
             this.tabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tabControl1.Controls.Add(this.tabPage1);
+            this.tabControl1.Controls.Add(this.Main);
             this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Location = new System.Drawing.Point(-1, 2);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(764, 379);
             this.tabControl1.TabIndex = 0;
+            this.tabControl1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tabControl1_KeyPress);
             // 
-            // tabPage1
+            // Main
             // 
-            this.tabPage1.Controls.Add(this.textBox1);
-            this.tabPage1.Controls.Add(this.lLeft);
-            this.tabPage1.Controls.Add(this.bClose);
-            this.tabPage1.Controls.Add(this.lDit);
-            this.tabPage1.Controls.Add(this.label3);
-            this.tabPage1.Controls.Add(this.tDit);
-            this.tabPage1.Controls.Add(this.lStatic);
-            this.tabPage1.Controls.Add(this.lFreq);
-            this.tabPage1.Controls.Add(this.lTone);
-            this.tabPage1.Controls.Add(this.tTone);
-            this.tabPage1.Controls.Add(this.label1);
-            this.tabPage1.Controls.Add(this.tStatic);
-            this.tabPage1.Controls.Add(this.bSend);
-            this.tabPage1.Controls.Add(this.tSend);
-            this.tabPage1.Location = new System.Drawing.Point(4, 22);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(756, 353);
-            this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "tabPage1";
-            this.tabPage1.UseVisualStyleBackColor = true;
-            this.tabPage1.Click += new System.EventHandler(this.tabPage1_Click);
+            this.Main.Controls.Add(this.textBox1);
+            this.Main.Controls.Add(this.lLeft);
+            this.Main.Controls.Add(this.bClose);
+            this.Main.Controls.Add(this.lDit);
+            this.Main.Controls.Add(this.label3);
+            this.Main.Controls.Add(this.tDit);
+            this.Main.Controls.Add(this.lStatic);
+            this.Main.Controls.Add(this.lFreq);
+            this.Main.Controls.Add(this.lTone);
+            this.Main.Controls.Add(this.tTone);
+            this.Main.Controls.Add(this.label1);
+            this.Main.Controls.Add(this.tStatic);
+            this.Main.Controls.Add(this.bSend);
+            this.Main.Controls.Add(this.tSend);
+            this.Main.Location = new System.Drawing.Point(4, 22);
+            this.Main.Name = "Main";
+            this.Main.Padding = new System.Windows.Forms.Padding(3);
+            this.Main.Size = new System.Drawing.Size(756, 353);
+            this.Main.TabIndex = 0;
+            this.Main.Text = "Main";
+            this.Main.UseVisualStyleBackColor = true;
+            this.Main.Click += new System.EventHandler(this.tabPage1_Click);
             // 
             // textBox1
             // 
@@ -255,16 +262,53 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.listBox1);
+            this.tabPage2.Controls.Add(this.label2);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Size = new System.Drawing.Size(756, 353);
             this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "Straight Key";
+            this.tabPage2.MouseDown += new System.Windows.Forms.MouseEventHandler(this.tabPage2_MouseDown);
+            this.tabPage2.MouseUp += new System.Windows.Forms.MouseEventHandler(this.tabPage2_MouseUp);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(225, 158);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(266, 13);
+            this.label2.TabIndex = 0;
+            this.label2.Text = "Left mouse down to depress key anywhere in this area.";
+            // 
+            // tabPage1
+            // 
+            this.tabPage1.Location = new System.Drawing.Point(4, 22);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Size = new System.Drawing.Size(756, 353);
+            this.tabPage1.TabIndex = 2;
+            this.tabPage1.Text = "Iambic";
+            this.tabPage1.UseVisualStyleBackColor = true;
             // 
             // timer1
             // 
             this.timer1.Enabled = true;
             this.timer1.Interval = 50;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // timer2
+            // 
+            this.timer2.Enabled = true;
+            this.timer2.Interval = 1000;
+            this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
+            // 
+            // listBox1
+            // 
+            this.listBox1.FormattingEnabled = true;
+            this.listBox1.Location = new System.Drawing.Point(10, 16);
+            this.listBox1.Name = "listBox1";
+            this.listBox1.Size = new System.Drawing.Size(196, 316);
+            this.listBox1.TabIndex = 1;
             // 
             // Form1
             // 
@@ -279,11 +323,13 @@
             this.Load += new System.EventHandler(this.Form1_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown_1);
             this.tabControl1.ResumeLayout(false);
-            this.tabPage1.ResumeLayout(false);
-            this.tabPage1.PerformLayout();
+            this.Main.ResumeLayout(false);
+            this.Main.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tDit)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tTone)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tStatic)).EndInit();
+            this.tabPage2.ResumeLayout(false);
+            this.tabPage2.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -292,7 +338,7 @@
 
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage2;
-        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.TabPage Main;
         private TButton bClose;
         private System.Windows.Forms.Label lDit;
         private System.Windows.Forms.Label label3;
@@ -308,6 +354,10 @@
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Label lLeft;
         private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.Timer timer2;
+        private System.Windows.Forms.ListBox listBox1;
       
     }
 }

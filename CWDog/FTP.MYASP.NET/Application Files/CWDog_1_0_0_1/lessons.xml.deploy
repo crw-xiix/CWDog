@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<Lessons>
+  <Lesson number ="1">
+    <Letters>
+      T,M,O,0
+    </Letters>
+    <Course>
+      <Introduce/>
+      <ByLetterPractice>1</ByLetterPractice>
+      <ByGroupPractice>1</ByGroupPractice>
+     
+    </Course>
+  </Lesson>
+  
+  
+</Lessons>
+
