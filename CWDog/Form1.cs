@@ -298,7 +298,7 @@ namespace CWDog
             //if (Form1.md) 
             for (int n = 0; n < sampleCount; n++)
             {
-                buffer[n + offset] = (float)(((r.NextDouble() - 0.5) * lstatic) / 100.0);
+               // buffer[n + offset] = (float)(((r.NextDouble() - 0.5) * lstatic) / 100.0);
             }
 
             if (Form1.md)
@@ -306,12 +306,12 @@ namespace CWDog
                 sk.getAudioData(buffer, offset, sampleCount);
             }
             // averageSampleTime := (averageSampleTime + (elapsed/SampleDivisor)) *SampleScalar;
-            for (int n = 0; n < sampleCount; n++)
+           /* for (int n = 0; n < sampleCount; n++)
             {
                 //    if (Form1.md)
                 lastValue = (lastValue + (buffer[n + offset] / sampleDiv)) * sampleSca;
                 buffer[n + offset] = lastValue;
-            }
+            }*/
             if (Form1.md)
             {
                 string st = "";
