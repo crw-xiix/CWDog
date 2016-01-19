@@ -16,17 +16,17 @@ using System.Net;
 
 namespace CWDog
 {
-    public partial class Form1 : Form
+    public partial class FormCW : Form
     {
         IWavePlayer waveOut = null;
-        public Form1()
+        public FormCW()
         {
             InitializeComponent();
             Config.Load();
             if (waveOut == null)
             {
                 sineWaveProvider = new SineWaveProvider32();
-                sineWaveProvider.SetWaveFormat(16000, 1); // 16kHz mono
+                sineWaveProvider.SetWaveFormat(Config.BitRate.value, 1); // 16kHz mono
                 sineWaveProvider.Frequency = 1000;
                 sineWaveProvider.Amplitude = 0.25f;
                 waveOut = new DirectSoundOut(50);
@@ -41,7 +41,7 @@ namespace CWDog
         public static bool md = false;
         private void tabPage1_Click(object sender, EventArgs e)
         {
-
+            tTone.Minimum = tLower.Value;
         }
         SpeechSynthesizer reader = new SpeechSynthesizer(); //declare the object 
         private void Form1_Load(object sender, EventArgs e)
@@ -232,6 +232,26 @@ namespace CWDog
                 }
             }
         }
+
+        private void bTone_Click(object sender, EventArgs e)
+        {
+            MorseQueue.AddSolidTone();
+        }
+
+        private void bEmpty_Click(object sender, EventArgs e)
+        {
+            MorseQueue.Clear();
+        }
+
+        private void tLower_Scroll(object sender, EventArgs e)
+        {
+            tTone.Minimum = tLower.Value;
+        }
+
+        private void tUpper_Scroll(object sender, EventArgs e)
+        {
+            tTone.Maximum = tUpper.Value;
+        }
     }
 
     public abstract class WaveProvider32 : IWaveProvider
@@ -301,7 +321,7 @@ namespace CWDog
                // buffer[n + offset] = (float)(((r.NextDouble() - 0.5) * lstatic) / 100.0);
             }
 
-            if (Form1.md)
+            if (FormCW.md)
             {
                 sk.getAudioData(buffer, offset, sampleCount);
             }
@@ -312,7 +332,7 @@ namespace CWDog
                 lastValue = (lastValue + (buffer[n + offset] / sampleDiv)) * sampleSca;
                 buffer[n + offset] = lastValue;
             }*/
-            if (Form1.md)
+            if (FormCW.md)
             {
                 string st = "";
             }

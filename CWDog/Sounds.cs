@@ -49,7 +49,7 @@ namespace CWDog
         public float Duration = 100;
         protected int samples = 0;
         protected int sampledur = 100;
-
+        protected double angle = 0.0;
         public override int getRemaining()
         {
             return sampledur - samples;
@@ -73,28 +73,35 @@ namespace CWDog
         public override int getAudioData(float[] dest, int offset, int length)
         {
             int bsamples = Math.Min(length,getRemaining());
-            double volume = 0.0f;
+            float br = Config.BitRate.value;
+            double volume = 0.25f;
             for (int i = 0; i < bsamples; i++)
             {
                 //1/100 a second to fade in.
-
-                if (samples < 160)
+                /*
+                if (samples < (Config.BitRate.value / 100))
                 {
                     volume = ((samples * 0.25) / (Config.BitRate.value/100));
                 }
                 else volume = 0.25f;
                 int left = (int) sampledur - samples;
-                if (left < 160)
+                if (left < (Config.BitRate.value / 100))
                 {
                     volume = ((left * 0.25) / (Config.BitRate.value / 100));
                 };
+                */
+                double adder = (2.0 * Math.PI * 1.0 * Config.ToneFrequency.value) / br;
 
+                angle += adder;
+                /*if (angle > 10000.0)
+                {
+                    angle -= 10000.0;
+                }*/
 
-
-
-                dest[offset + i] = (float)(volume * Math.Sin((2 * Math.PI * samples * Frequency) / 16000.0));
+                dest[offset + i] = (float)(volume * Math.Sin(angle));
+//old                dest[offset + i] = (float)(volume * Math.Sin((2 * Math.PI * samples * Config.ToneFrequency.value) / br));
                 samples++;
-                //if (samples >= 16000) samples = 0;
+                
             }
             return bsamples;
         }

@@ -1,6 +1,6 @@
 ﻿namespace CWDog
 {
-    partial class Form1
+    partial class FormCW
     {
         /// <summary>
         /// Required designer variable.
@@ -31,6 +31,12 @@
             this.components = new System.ComponentModel.Container();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.Main = new System.Windows.Forms.TabPage();
+            this.label5 = new System.Windows.Forms.Label();
+            this.tUpper = new System.Windows.Forms.TrackBar();
+            this.label4 = new System.Windows.Forms.Label();
+            this.tLower = new System.Windows.Forms.TrackBar();
+            this.bEmpty = new CWDog.TButton();
+            this.bTone = new CWDog.TButton();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.lLeft = new System.Windows.Forms.Label();
             this.bClose = new CWDog.TButton();
@@ -46,13 +52,15 @@
             this.bSend = new CWDog.TButton();
             this.tSend = new System.Windows.Forms.TextBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.listBox1 = new System.Windows.Forms.ListBox();
             this.label2 = new System.Windows.Forms.Label();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.timer2 = new System.Windows.Forms.Timer(this.components);
-            this.listBox1 = new System.Windows.Forms.ListBox();
             this.tabControl1.SuspendLayout();
             this.Main.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.tUpper)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tLower)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tDit)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tTone)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tStatic)).BeginInit();
@@ -70,12 +78,18 @@
             this.tabControl1.Location = new System.Drawing.Point(-1, 2);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(764, 379);
+            this.tabControl1.Size = new System.Drawing.Size(764, 560);
             this.tabControl1.TabIndex = 0;
             this.tabControl1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tabControl1_KeyPress);
             // 
             // Main
             // 
+            this.Main.Controls.Add(this.label5);
+            this.Main.Controls.Add(this.tUpper);
+            this.Main.Controls.Add(this.label4);
+            this.Main.Controls.Add(this.tLower);
+            this.Main.Controls.Add(this.bEmpty);
+            this.Main.Controls.Add(this.bTone);
             this.Main.Controls.Add(this.textBox1);
             this.Main.Controls.Add(this.lLeft);
             this.Main.Controls.Add(this.bClose);
@@ -93,15 +107,91 @@
             this.Main.Location = new System.Drawing.Point(4, 22);
             this.Main.Name = "Main";
             this.Main.Padding = new System.Windows.Forms.Padding(3);
-            this.Main.Size = new System.Drawing.Size(756, 353);
+            this.Main.Size = new System.Drawing.Size(756, 534);
             this.Main.TabIndex = 0;
             this.Main.Text = "Main";
             this.Main.UseVisualStyleBackColor = true;
             this.Main.Click += new System.EventHandler(this.tabPage1_Click);
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(48, 282);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(155, 13);
+            this.label5.TabIndex = 20;
+            this.label5.Text = "Tone Frequency (400-1000 Hz)";
+            // 
+            // tUpper
+            // 
+            this.tUpper.LargeChange = 50;
+            this.tUpper.Location = new System.Drawing.Point(51, 298);
+            this.tUpper.Maximum = 4000;
+            this.tUpper.Minimum = 40;
+            this.tUpper.Name = "tUpper";
+            this.tUpper.Size = new System.Drawing.Size(584, 42);
+            this.tUpper.SmallChange = 50;
+            this.tUpper.TabIndex = 19;
+            this.tUpper.TickFrequency = 50;
+            this.tUpper.Value = 400;
+            this.tUpper.Scroll += new System.EventHandler(this.tUpper_Scroll);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(48, 234);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(155, 13);
+            this.label4.TabIndex = 18;
+            this.label4.Text = "Tone Frequency (400-1000 Hz)";
+            // 
+            // tLower
+            // 
+            this.tLower.LargeChange = 50;
+            this.tLower.Location = new System.Drawing.Point(51, 250);
+            this.tLower.Maximum = 4000;
+            this.tLower.Minimum = 40;
+            this.tLower.Name = "tLower";
+            this.tLower.Size = new System.Drawing.Size(584, 42);
+            this.tLower.SmallChange = 50;
+            this.tLower.TabIndex = 17;
+            this.tLower.TickFrequency = 50;
+            this.tLower.Value = 400;
+            this.tLower.Scroll += new System.EventHandler(this.tLower_Scroll);
+            // 
+            // bEmpty
+            // 
+            this.bEmpty.BorderColor = System.Drawing.Color.Black;
+            this.bEmpty.BorderWidth = 0;
+            this.bEmpty.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.bEmpty.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.bEmpty.Location = new System.Drawing.Point(128, 6);
+            this.bEmpty.Name = "bEmpty";
+            this.bEmpty.Radius = -1;
+            this.bEmpty.Size = new System.Drawing.Size(75, 39);
+            this.bEmpty.TabIndex = 16;
+            this.bEmpty.Text = "Empty";
+            this.bEmpty.UseVisualStyleBackColor = true;
+            this.bEmpty.Click += new System.EventHandler(this.bEmpty_Click);
+            // 
+            // bTone
+            // 
+            this.bTone.BorderColor = System.Drawing.Color.Black;
+            this.bTone.BorderWidth = 0;
+            this.bTone.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.bTone.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.bTone.Location = new System.Drawing.Point(51, 6);
+            this.bTone.Name = "bTone";
+            this.bTone.Radius = -1;
+            this.bTone.Size = new System.Drawing.Size(75, 39);
+            this.bTone.TabIndex = 15;
+            this.bTone.Text = "Solid Tone";
+            this.bTone.UseVisualStyleBackColor = true;
+            this.bTone.Click += new System.EventHandler(this.bTone_Click);
+            // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(51, 312);
+            this.textBox1.Location = new System.Drawing.Point(51, 436);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(100, 20);
             this.textBox1.TabIndex = 14;
@@ -123,7 +213,7 @@
             this.bClose.DialogResult = System.Windows.Forms.DialogResult.None;
             this.bClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bClose.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.bClose.Location = new System.Drawing.Point(435, 351);
+            this.bClose.Location = new System.Drawing.Point(435, 475);
             this.bClose.Name = "bClose";
             this.bClose.Radius = -1;
             this.bClose.Size = new System.Drawing.Size(118, 37);
@@ -138,7 +228,7 @@
             this.lDit.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lDit.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lDit.ForeColor = System.Drawing.Color.GreenYellow;
-            this.lDit.Location = new System.Drawing.Point(474, 251);
+            this.lDit.Location = new System.Drawing.Point(660, 375);
             this.lDit.Name = "lDit";
             this.lDit.Size = new System.Drawing.Size(88, 42);
             this.lDit.TabIndex = 11;
@@ -148,7 +238,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(48, 235);
+            this.label3.Location = new System.Drawing.Point(48, 359);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(104, 13);
             this.label3.TabIndex = 10;
@@ -157,11 +247,11 @@
             // tDit
             // 
             this.tDit.LargeChange = 50;
-            this.tDit.Location = new System.Drawing.Point(51, 251);
+            this.tDit.Location = new System.Drawing.Point(51, 375);
             this.tDit.Maximum = 250;
             this.tDit.Minimum = 10;
             this.tDit.Name = "tDit";
-            this.tDit.Size = new System.Drawing.Size(417, 42);
+            this.tDit.Size = new System.Drawing.Size(584, 42);
             this.tDit.SmallChange = 50;
             this.tDit.TabIndex = 9;
             this.tDit.TickFrequency = 20;
@@ -174,7 +264,7 @@
             this.lStatic.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lStatic.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lStatic.ForeColor = System.Drawing.Color.GreenYellow;
-            this.lStatic.Location = new System.Drawing.Point(474, 129);
+            this.lStatic.Location = new System.Drawing.Point(660, 129);
             this.lStatic.Name = "lStatic";
             this.lStatic.Size = new System.Drawing.Size(88, 42);
             this.lStatic.TabIndex = 8;
@@ -187,7 +277,7 @@
             this.lFreq.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lFreq.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lFreq.ForeColor = System.Drawing.Color.GreenYellow;
-            this.lFreq.Location = new System.Drawing.Point(474, 190);
+            this.lFreq.Location = new System.Drawing.Point(660, 190);
             this.lFreq.Name = "lFreq";
             this.lFreq.Size = new System.Drawing.Size(88, 42);
             this.lFreq.TabIndex = 7;
@@ -207,13 +297,13 @@
             // 
             this.tTone.LargeChange = 50;
             this.tTone.Location = new System.Drawing.Point(51, 190);
-            this.tTone.Maximum = 1000;
-            this.tTone.Minimum = 400;
+            this.tTone.Maximum = 4000;
+            this.tTone.Minimum = 40;
             this.tTone.Name = "tTone";
-            this.tTone.Size = new System.Drawing.Size(417, 42);
+            this.tTone.Size = new System.Drawing.Size(584, 42);
             this.tTone.SmallChange = 50;
             this.tTone.TabIndex = 5;
-            this.tTone.TickFrequency = 20;
+            this.tTone.TickFrequency = 50;
             this.tTone.Value = 400;
             this.tTone.Scroll += new System.EventHandler(this.tTone_Scroll);
             // 
@@ -231,7 +321,7 @@
             this.tStatic.Location = new System.Drawing.Point(51, 129);
             this.tStatic.Maximum = 100;
             this.tStatic.Name = "tStatic";
-            this.tStatic.Size = new System.Drawing.Size(417, 42);
+            this.tStatic.Size = new System.Drawing.Size(584, 42);
             this.tStatic.TabIndex = 3;
             this.tStatic.Scroll += new System.EventHandler(this.tStatic_Scroll);
             // 
@@ -266,11 +356,19 @@
             this.tabPage2.Controls.Add(this.label2);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Size = new System.Drawing.Size(756, 353);
+            this.tabPage2.Size = new System.Drawing.Size(756, 534);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Straight Key";
             this.tabPage2.MouseDown += new System.Windows.Forms.MouseEventHandler(this.tabPage2_MouseDown);
             this.tabPage2.MouseUp += new System.Windows.Forms.MouseEventHandler(this.tabPage2_MouseUp);
+            // 
+            // listBox1
+            // 
+            this.listBox1.FormattingEnabled = true;
+            this.listBox1.Location = new System.Drawing.Point(10, 16);
+            this.listBox1.Name = "listBox1";
+            this.listBox1.Size = new System.Drawing.Size(196, 316);
+            this.listBox1.TabIndex = 1;
             // 
             // label2
             // 
@@ -285,7 +383,7 @@
             // 
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Size = new System.Drawing.Size(756, 353);
+            this.tabPage1.Size = new System.Drawing.Size(756, 534);
             this.tabPage1.TabIndex = 2;
             this.tabPage1.Text = "Iambic";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -302,22 +400,14 @@
             this.timer2.Interval = 1000;
             this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
             // 
-            // listBox1
-            // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.Location = new System.Drawing.Point(10, 16);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(196, 316);
-            this.listBox1.TabIndex = 1;
-            // 
-            // Form1
+            // FormCW
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(763, 377);
+            this.ClientSize = new System.Drawing.Size(763, 558);
             this.Controls.Add(this.tabControl1);
             this.KeyPreview = true;
-            this.Name = "Form1";
+            this.Name = "FormCW";
             this.Text = "Form1";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form1_FormClosed);
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -325,6 +415,8 @@
             this.tabControl1.ResumeLayout(false);
             this.Main.ResumeLayout(false);
             this.Main.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.tUpper)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tLower)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tDit)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tTone)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tStatic)).EndInit();
@@ -358,6 +450,12 @@
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.Timer timer2;
         private System.Windows.Forms.ListBox listBox1;
+        private TButton bEmpty;
+        private TButton bTone;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TrackBar tUpper;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TrackBar tLower;
       
     }
 }

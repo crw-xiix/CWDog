@@ -18,6 +18,14 @@ namespace CWDog
         }
         private static CWSound CWNone = new CWSound();
 
+        public static void AddSolidTone()
+        {
+            Queue.Enqueue(new CWDah(1234, 50000));
+        }
+        public static void Clear()
+        {
+            Queue.Clear();
+        }
         public static void AddChar(Char c) {
             string lu = "" + c;
             if (Char.IsDigit(c)) lu = "D" + c;
